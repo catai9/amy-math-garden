@@ -1,10 +1,10 @@
 body {
-font-family: 'Just Another Hand', cursive;
-background-color: #242E6B;
-width: 100%;
-background-position: top;
-background-repeat: no-repeat;
-background-size: cover;
+  font-family: 'Just Another Hand', cursive;
+  background-color: #242E6B;
+  width: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1, h2 {
