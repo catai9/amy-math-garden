@@ -30,6 +30,8 @@ function predictImage() {
     X.dispose();
     result.dispose();
 
+    // console.log(tf.memory());
+
     return output;
 }
 
