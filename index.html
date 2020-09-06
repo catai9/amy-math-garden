@@ -19,24 +19,19 @@
 
 </head>
 
-<body>
+<body onload="loadModel()">
 
-  <div class='container'>
+  <div id="loader"></div>
+
+  <div id="main-section" class='container animate-bottom'>
     <h1 id='title'>Math Garden</h1>
     <h2 id='question'><span id='n1'>3</span> + <span id='n2'>2</span> = </h2>
     <canvas id='my-canvas' width="150" height="150"></canvas>
   </div>
 
-  <div class='container'>
+  <div id="submit" class='container animate-bottom'>
     <button id='checkAnswer' class='btn' value='Check'>Check Answer</button>
   </div>
-
-  <script>
-    loadModel();
-    prepareCanvas();
-    loadNewQuestion();
-    addEventListeners();
-  </script>
 
 </body>
 
