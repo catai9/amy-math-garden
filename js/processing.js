@@ -3,6 +3,15 @@
  */
 async function loadModel() {
     model = await tf.loadGraphModel('TFJS/model.json');
+
+    // Shows the page's content and removes loader once the model finishes loading.
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("main-section").style.display = "block";
+    document.getElementById("submit").style.display = "block";
+
+    prepareCanvas();
+    loadNewQuestion();
+    addEventListeners();
 }
 
 /**
@@ -20,19 +29,23 @@ function addEventListeners() {
  * Predicts the image based on what the user draws on the canvas.
  */
 function predictImage() {
-    let image = cv.imread(canvas);
-    const X = createTensorFromImage(image);
-    const result = model.predict(X);
-    const output = result.dataSync()[0];
+    try {
+        let image = cv.imread(canvas);
+        const X = createTensorFromImage(image);
+        const result = model.predict(X);
+        const output = result.dataSync()[0];
 
-    // Deletes unused variables to prevent memory leaks.
-    image.delete();
-    X.dispose();
-    result.dispose();
+        // Deletes unused variables to prevent memory leaks.
+        image.delete();
+        X.dispose();
+        result.dispose();
+        // console.log(tf.memory());
 
-    // console.log(tf.memory());
-
-    return output;
+        return output;
+    } catch (err) {
+        console.log('Error: ', err);
+        return null;
+    }
 }
 
 /**
